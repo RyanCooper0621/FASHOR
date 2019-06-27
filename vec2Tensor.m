@@ -1,7 +1,6 @@
 %{
 Description:
-    Convert a vector into a tensor, given the size of each mode 
-    respectively.
+    Revert the tensor through its CP decomposed tensor factors. 
 
 Author:
     Jiaqi Zhang <zjqseu@gmail.com>
@@ -14,15 +13,16 @@ History:
 function [res] = vec2Tensor(vec,dimSize)
     %{
     Description:
-        Convert a vector into a tensor, given the size of each dimension.
+        Revert the tensor through its CP decomposed tensor factors. 
+        The size of vector is p_1*p_2*...*p_M. 
 
     Inputs:
-        vec -- The vector needs to converted.
-        dimSize -- A sequence of integers denotes the size of each
+        vec -- A vector of tensor factors with shape p_1*p_2*...*p_M..
+        dimSize -- A vector of integers denotes the size of each
                    dimension respectively.
 
     Outputs:
-        res -- Converted tensor.
+        res -- Reverted tensor.
     %}
     startIndex = 1;
     for  m = 1:length(dimSize)

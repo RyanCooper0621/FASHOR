@@ -1,6 +1,6 @@
 %{
 Description:
-    Fast and scalable higher-order regression model
+    Fast and scalable higher-order regression model.
 
 Reference:
 
@@ -85,15 +85,16 @@ function [Err, W] = FASHOR_l1(X, Y, R, lambda, epsilon, iterations, diff)
     
 
 function [res] = modeProd(X,vecW,dimSize, exclude)
-%TODO: crrectify this
     %{
     Description:
-        Cumulative tensor mode product.
+        Cumulative tensor-mode product.
 
     Inputs:
         X -- tensor observed samples
         vecW -- vectors for each mode
         dimSize -- size of each mode
+        exclude -- The index of the mode needs to be excluded in the
+                   computation
     
     Outputs:
         res -- product result
