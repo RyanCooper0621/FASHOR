@@ -24,6 +24,7 @@ function [res] = vec2Tensor(vec,dimSize)
     Outputs:
         res -- Reverted tensor.
     %}
+    addpath('tensor_toolbox/');
     startIndex = 1;
     for  m = 1:length(dimSize)
         endIndex = startIndex + dimSize(m) - 1;
