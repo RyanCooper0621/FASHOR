@@ -55,7 +55,9 @@ function [Err, W] = FASHOR_l1(X, Y, R, lambda, epsilon, iterations, diff)
         % tensor-form W for calculations
         W_r = vec2Tensor(W(r,:),XSize(2:end));
         % compute the residual
-        residual = residual - ttt(X, W_r, 2:dim,1:(dim-1)); 
+        if r > 1
+            residual = residual - ttt(X, W_r, 2:dim,1:(dim-1)); 
+        end
         clear W_r;
         % loop until the pre-defined iteration number
         lastW = W(r,:);
@@ -75,8 +77,9 @@ function [Err, W] = FASHOR_l1(X, Y, R, lambda, epsilon, iterations, diff)
                 W(r,startIndex:startIndex+XSize(m)-1) = estimatedW;
             end
             % break when W ceases to improve or the improvement is negligible
-            cur_diff = norm(W(r,:) - lastW, 'fro')/norm(lastW);
-            if cur_diff <= diff || cur_diff > last_diff  
+            %cur_diff = norm(W(r,:) - lastW, 'fro')/norm(lastW);
+            cur_diff = norm(W(r,:) - lastW, 'fro') / prod(XSize(2:end));
+            if cur_diff <= diff %|| cur_diff > last_diff  
                 break
             end
             lastW = W(r,:);
