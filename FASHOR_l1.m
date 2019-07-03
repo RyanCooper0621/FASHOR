@@ -47,7 +47,8 @@ function [Err, W] = FASHOR_l1(X, Y, R, lambda, epsilon, iterations, diff)
     dim = ndims(X);
     XSize = size(X);
     % initialize weight as a matrix with shape R * (p_1 * p_2 *...* p_M)
-    W = ones(R, sum(XSize(2:end)));
+    %W = ones(R, sum(XSize(2:end)));
+    W = rand(R, sum(XSize(2:end))); % randomly initialize W
     residual = Y;
     % training
     for r = 1:R
